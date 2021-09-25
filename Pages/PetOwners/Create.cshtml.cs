@@ -1,40 +1,33 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PetShopAtlantico.Data;
 using PetShopAtlantico.Models;
 
-namespace PetShop_Atlantico.Pages
+namespace PetShop_Atlantico.Pages.PetOwners
 {
-    public class IndexModel : PageModel
+    public class CreateModel : PageModel
     {
-        private readonly DataContext _context;
-        private readonly ILogger<IndexModel> _logger;
+        private readonly PetShopAtlantico.Data.DataContext _context;
 
-        public IndexModel(DataContext context)
+        public CreateModel(PetShopAtlantico.Data.DataContext context)
         {
             _context = context;
         }
 
-        public IList<Pet> Pets { get; set; }
-        
-        [BindProperty]
-        public Pet Pet { get; set; }
-        
+        public IActionResult OnGet()
+        {
+            return Page();
+        }
+
         [BindProperty]
         public PetOwner PetOwner { get; set; }
 
-        public async Task OnGetAsync()
-        {
-            Pets = await _context.Pets.ToListAsync();
-        }
-        
-        // POST Pets
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -42,7 +35,7 @@ namespace PetShop_Atlantico.Pages
                 return Page();
             }
 
-            _context.Pets.Add(Pet);
+            _context.PetOwners.Add(PetOwner);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -1,238 +1,279 @@
 ﻿@page
+@using PetShopAtlantico.Models
 @model IndexModel
+
 @{
-  ViewData["Title"] = "Home";
+    ViewData["Title"] = "Home";
 }
 
-@* <div class="text-center">
-  <div id="carouselPets" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-  <li data-target="#carouselPets" data-slide-to="0" class="active"></li>
-  <li data-target="#carouselPets" data-slide-to="1"></li>
-  <li data-target="#carouselPets" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-  <div class="carousel-item active">
-  <img src="img/pets01.png" class="img-fluid d-block" alt="pets01">
-  </div>
-  <div class="carousel-item">
-  <img src="img/pets02.png" class="img-fluid d-block" alt="pets02">
-  </div>
-  <div class="carousel-item">
-  <img src="img/pets03.png" class="img-fluid d-block" alt="pets03">
-  </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselPets" role="button" data-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselPets" role="button" data-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="sr-only">Next</span>
-  </a>
-  </div>
-  </div> *@
-
-
 <h1 class="description">
-  Cuide do seu Pet com amor e carinho
+    Cuide do seu Pet com amor e carinho
 </h1>
 
 <div class="divider"></div>
 
 <div id="cardGrid" class="container text-center">
-  <div class="row">
-    <div class="col-sm">
-      <div class="card" style="width: 19rem;">
-        <img src="img/pets07.png" class="card-img-top" alt="Acompanhamento">
-        <div class="card-body">
-          <h5 class="card-title">Acompanhamento</h5>
-          <p class="card-text">Acompanhe seu Pet</p><br>
-          <a id="button" class="btn btn-block" href="#" data-toggle="modal" data-target="#healthStateModal">clique
-            aqui</a>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 19rem;">
+                <img src="img/pets07.png" class="card-img-top" alt="Acompanhamento">
+                <div class="card-body">
+                    <h5 class="card-title">Acompanhamento</h5>
+                    <p class="card-text">Acompanhe seu Pet</p><br>
+                    <a id="button" class="btn btn-block" href="#" data-toggle="modal" data-target="#healthStateModal">
+                        clique
+                        aqui
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card" style="width: 19rem;">
-        <img src="img/pets04.png" class="card-img-top" alt="Internacao">
-        <div class="card-body">
-          <h5 class="card-title">Internação</h5>
-          <p class="card-text">Verifique reservas para internação do seu Pet</p>
-          <a id="button" class="btn btn-block" href="#" data-toggle="modal" data-target="#accommodationModal">clique
-            aqui</a>
+        <div class="col-sm">
+            <div class="card" style="width: 19rem;">
+                <img src="img/pets04.png" class="card-img-top" alt="Internacao">
+                <div class="card-body">
+                    <h5 class="card-title">Internação</h5>
+                    <p class="card-text">Verifique reservas para internação do seu Pet</p>
+                    <a id="button" class="btn btn-block" href="#" data-toggle="modal" data-target="#accommodationModal">
+                        clique
+                        aqui
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card">
-        <img src="img/pets05.png" class="card-img-top" alt="owner pet">
-        <div class="card-body">
-          <h5 class="card-title">Familia</h5>
-          <p class="card-text">Área reservada para cadastros do Responsável</p>
-          <a id="button" class="btn btn-block" href="#" data-toggle="modal" data-target="#ownerPetModal">clique aqui</a>
+        <div class="col-sm">
+            <div class="card">
+                <img src="img/pets05.png" class="card-img-top" alt="owner pet">
+                <div class="card-body">
+                    <h5 class="card-title">Familia</h5>
+                    <p class="card-text">Área reservada para cadastros do Responsável</p>
+                    <a id="button" class="btn btn-block" href="#" data-toggle="modal" data-target="#ownerPetModal">clique aqui</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card" style="width: 19rem;">
-        <img src="img/pets06.png" class="card-img-top" alt="pet">
-        <div class="card-body">
-          <h5 class="card-title">Pet</h5>
-          <p class="card-text">Cadastre seu Pet aqui</p><br>
-          <a id="button" class="btn btn-block" href="#" data-toggle="modal" data-target="#petModal">clique
-            aqui</a>
+        <div class="col-sm">
+            <div class="card" style="width: 19rem;">
+                <img src="img/pets06.png" class="card-img-top" alt="pet">
+                <div class="card-body">
+                    <h5 class="card-title">Pet</h5>
+                    <p class="card-text">Cadastre seu Pet aqui</p><br>
+                    <a id="button" class="btn btn-block" href="#" data-toggle="modal" data-target="#petModal">
+                        clique
+                        aqui
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <!-- Modals -->
 
 @* Health State *@
 <div class="modal fade bd-example-modal-lg" id="healthStateModal" tabindex="-1" role="dialog"
-  aria-labelledby="modalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalCenterTitle">Acompanhamento</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
-        <button id="saveButton" type="button" class="btn btn-primary">salvar</button>
-      </div>
+     aria-labelledby="modalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Acompanhamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-dark text-center">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Pets[0].PetName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Pets[0].Breed)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Pets[0].HealthState)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Pets[0].OwnerName)
+                        </th>
+                        <th>
+                            Ações
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    @foreach (var item in Model.Pets)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PetName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Breed)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HealthState)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OwnerName)
+                            </td>
+                            <td>
+                                <a class="badge badge-pill badge-info">Visualizar</a>
+                                <a class="badge badge-pill badge-warning">Editar</a>
+                                <a class="badge badge-pill badge-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 @* Accommodations *@
 <div class="modal fade bd-example-modal-lg" id="accommodationModal" tabindex="-1" role="dialog"
-  aria-labelledby="modalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalCenterTitle">Internação</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="inputActualState">Estado atual:</label>
-              <select class="form-control form-control-lg" id="inputActualState">
-                <option>Em tratamento</option>
-                <option>Se recuperando</option>
-                <option>Recuperado</option>
-              </select>
-              <div class="form-row">
-                <div class="form group">
-                  <label for="inputHospitalizationMotive">Motivo da Hospitalização:</label>
-                  <textarea class="form-control" id="inputHospitalizationMotive" cols="100"></textarea>
-                </div>
-              </div>
+     aria-labelledby="modalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Internação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
-        <button id="saveButton" type="button" class="btn btn-primary">salvar</button>
-      </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inputActualState">Estado atual:</label>
+                            <select class="form-control form-control-lg" id="inputActualState">
+                                <option>Em tratamento</option>
+                                <option>Se recuperando</option>
+                                <option>Recuperado</option>
+                            </select>
+                            <div class="form-row">
+                                <div class="form group">
+                                    <label for="inputHospitalizationMotive">Motivo da Hospitalização:</label>
+                                    <textarea class="form-control" id="inputHospitalizationMotive" cols="100"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
+                <button id="saveButton" type="button" class="btn btn-primary">salvar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 @* Owner Pet *@
 <div class="modal fade bd-example-modal-lg" id="ownerPetModal" tabindex="-1" role="dialog"
-  aria-labelledby="modalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalCenterTitle">Familia</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-          <div class="form-row">
-            <div class="form group col-md-6">
-              <label for="inputNameOwner">Nome:</label>
-              <input type="text" id="inputNameOwner" class="form-control">
+     aria-labelledby="modalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Familia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="form group col-md-6">
-              <label for="inputEmailOwner">E-mail:</label>
-              <input type="email" id="inputEmailOwner" class="form-control">
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-row">
+                        <div class="form group col-md-6">
+                            <label for="inputNameOwner">Nome:</label>
+                            <input type="text" id="inputNameOwner" class="form-control">
+                        </div>
+                        <div class="form group col-md-6">
+                            <label for="inputEmailOwner">E-mail:</label>
+                            <input type="email" id="inputEmailOwner" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form group col-md-6">
+                            <label for="inputAddressOwner">Endereço:</label>
+                            <input type="text" id="inputAddressOwner" class="form-control" placeholder="Rua das Flores, 1234">
+                        </div>
+                        <div class="form group col-md-6">
+                            <label for="inputPhoneOwner">Contato:</label>
+                            <input type="tel" id="inputPhoneOwner" class="form-control" placeholder="(DDD) 99876-5432">
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form group col-md-6">
-              <label for="inputAddressOwner">Endereço:</label>
-              <input type="text" id="inputAddressOwner" class="form-control" placeholder="Rua das Flores, 1234">
+            <div class="modal-footer">
+                <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
+                <button id="saveButton" type="button" class="btn btn-primary">salvar</button>
             </div>
-            <div class="form group col-md-6">
-              <label for="inputPhoneOwner">Contato:</label>
-              <input type="tel" id="inputPhoneOwner" class="form-control" placeholder="(DDD) 99876-5432">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
-        <button id="saveButton" type="button" class="btn btn-primary">salvar</button>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
 
 @* Pets *@
 <div class="modal fade bd-example-modal-lg" id="petModal" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalCenterTitle">Pet</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-          <div class="form-row">
-            <div class="form group col-md-6">
-              <label for="inputNamePet">Nome do Pet:</label>
-              <input type="text" id="inputNamePet" class="form-control">
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Pet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="form group col-md-6">
-              <label for="inputBreedPet">Raça/Espécie:</label>
-              <input type="email" id="inputBreedPet" class="form-control">
+            <div class="modal-body">
+                <form method="post">
+                    <div class="form-row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form group col-md-6">
+                            <label asp-for="Pet.PetName" class="control-label"></label>
+                            <input asp-for="Pet.PetName" class="form-control"/>
+                            <span asp-validation-for="Pet.PetName" class="text-danger"></span>
+                        </div>
+                        <div class="form group col-md-6">
+                            <label asp-for="Pet.Breed" class="control-label"></label>
+                            <input asp-for="Pet.Breed" class="form-control"/>
+                            <span asp-validation-for="Pet.Breed" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label asp-for="Pet.HospitalizationMotive" class="control-label"></label>
+                        <input asp-for="Pet.HospitalizationMotive" class="form-control"/>
+                        <span asp-validation-for="Pet.HospitalizationMotive" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <label asp-for="Pet.HealthState" class="control-label"></label>
+                        <input asp-for="Pet.HealthState" class="form-control"/>
+                        <span asp-validation-for="Pet.HealthState" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form group col-md-6">
+                            <label asp-for="Pet.OwnerName" class="control-label"></label>
+                            <input asp-for="Pet.OwnerName" class="form-control"/>
+                            <span asp-validation-for="Pet.OwnerName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label asp-for="Pet.PetOwnerId" class="control-label"></label>
+                        <input asp-for="Pet.PetOwnerId" class="form-control"/>
+                        <span asp-validation-for="Pet.PetOwnerId" class="text-danger"></span>
+                    </div>
+                </form>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form group col-md-6">
-              <label for="inputNameOwnerPet">Nome do Familiar:</label>
-              <input type="text" id="inputNameOwnerPet" class="form-control">
+            <div class="modal-footer">
+                <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
+                <input type="submit" value="Create" class="btn btn-primary"/>
+                <button id="saveButton" type="button" class="btn btn-primary">salvar</button>
             </div>
-            <div class="form group col-md-6">
-              <label for="inputPicturePet">Foto do Pet:</label>
-              <input type="file" class="form-control-file" id="inputPicturePet">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
-        <button id="saveButton" type="button" class="btn btn-primary">salvar</button>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

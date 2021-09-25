@@ -1,0 +1,64 @@
+@page
+@model PetShop_Atlantico.Pages.Pets.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pet.PetName" class="control-label"></label>
+                <input asp-for="Pet.PetName" class="form-control" />
+                <span asp-validation-for="Pet.PetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pet.Breed" class="control-label"></label>
+                <input asp-for="Pet.Breed" class="form-control" />
+                <span asp-validation-for="Pet.Breed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pet.HospitalizationMotive" class="control-label"></label>
+                <input asp-for="Pet.HospitalizationMotive" class="form-control" />
+                <span asp-validation-for="Pet.HospitalizationMotive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pet.HealthState" class="control-label"></label>
+                <input asp-for="Pet.HealthState" class="form-control" />
+                <span asp-validation-for="Pet.HealthState" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Pet.Picture" /> @Html.DisplayNameFor(model => model.Pet.Picture)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pet.OwnerName" class="control-label"></label>
+                <input asp-for="Pet.OwnerName" class="form-control" />
+                <span asp-validation-for="Pet.OwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pet.PetOwnerId" class="control-label"></label>
+                <input asp-for="Pet.PetOwnerId" class="form-control" />
+                <span asp-validation-for="Pet.PetOwnerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

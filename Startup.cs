@@ -4,27 +4,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PetShop_Atlantico.Data;
+using PetShopAtlantico.Data;
 
 namespace PetShop_Atlantico
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            Environment = env;
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
-        public IWebHostEnvironment Environment { get; set; }
-
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(opt => opt.UseSqlite(Configuration.GetConnectionString("DataContext"))); 
+            services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("DataContext")));
             services.AddRazorPages();
         }
 
@@ -38,7 +34,6 @@ namespace PetShop_Atlantico
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
