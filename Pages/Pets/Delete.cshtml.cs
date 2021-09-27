@@ -1,20 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using PetShopAtlantico.Data;
 using PetShopAtlantico.Models;
 
-namespace PetShop_Atlantico.Pages.Pets
+namespace PetShopAtlantico.Pages.Pets
 {
     public class DeleteModel : PageModel
     {
-        private readonly PetShopAtlantico.Data.DataContext _context;
+        private readonly DataContext _context;
 
-        public DeleteModel(PetShopAtlantico.Data.DataContext context)
+        public DeleteModel(DataContext context)
         {
             _context = context;
         }
@@ -29,7 +25,8 @@ namespace PetShop_Atlantico.Pages.Pets
                 return NotFound();
             }
 
-            Pet = await _context.Pets.FirstOrDefaultAsync(m => m.Id == id);
+            Pet = await _context.Pet
+                .Include(p => p.PetOwner).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Pet == null)
             {
@@ -45,11 +42,11 @@ namespace PetShop_Atlantico.Pages.Pets
                 return NotFound();
             }
 
-            Pet = await _context.Pets.FindAsync(id);
+            Pet = await _context.Pet.FindAsync(id);
 
             if (Pet != null)
             {
-                _context.Pets.Remove(Pet);
+                _context.Pet.Remove(Pet);
                 await _context.SaveChangesAsync();
             }
 

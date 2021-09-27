@@ -1,25 +1,56 @@
 @page
-@model PetShop_Atlantico.Pages.Accommodations.DetailsModel
+@model PetShopAtlantico.Pages.Accommodations.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="container">
 
-<div>
-    <h4>Accommodation</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Accommodation.IsVacant)
+    <h1 class="titlePage">Accommodation - Details</h1>
+    <hr>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.HospitalizationMotive):
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Accommodation.IsVacant)
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.HospitalizationMotive)
         </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Accommodation.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    </div>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.HealthState):
+        </dt>
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.HealthState)
+        </dd>
+    </div>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.AccommodationDate):
+        </dt>
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.AccommodationDate)
+        </dd>
+    </div>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.IsNotVacant):
+        </dt>
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.IsNotVacant)
+        </dd>
+    </div>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.Pet.PetName):
+        </dt>
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.Pet.PetName)
+        </dd>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Accommodation.Id" class="btn btn-primary">Edit</a>
+        <a asp-page="./Index" class="btn btn-warning">Back</a>
+    </div>
 </div>

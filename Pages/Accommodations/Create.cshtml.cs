@@ -1,33 +1,29 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using PetShopAtlantico.Data;
 using PetShopAtlantico.Models;
 
-namespace PetShop_Atlantico.Pages.Accommodations
+namespace PetShopAtlantico.Pages.Accommodations
 {
     public class CreateModel : PageModel
     {
-        private readonly PetShopAtlantico.Data.DataContext _context;
+        private readonly DataContext _context;
 
-        public CreateModel(PetShopAtlantico.Data.DataContext context)
+        public CreateModel(DataContext context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
+        ViewData["PetName"] = new SelectList(_context.Pet, "Id", "PetName");
             return Page();
         }
 
         [BindProperty]
         public Accommodation Accommodation { get; set; }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -35,7 +31,7 @@ namespace PetShop_Atlantico.Pages.Accommodations
                 return Page();
             }
 
-            _context.Accommodations.Add(Accommodation);
+            _context.Accommodation.Add(Accommodation);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -1,21 +1,17 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PetShopAtlantico.Data;
 using PetShopAtlantico.Models;
 
-namespace PetShop_Atlantico.Pages.PetOwners
+namespace PetShopAtlantico.Pages.PetOwners
 {
     public class EditModel : PageModel
     {
-        private readonly PetShopAtlantico.Data.DataContext _context;
+        private readonly DataContext _context;
 
-        public EditModel(PetShopAtlantico.Data.DataContext context)
+        public EditModel(DataContext context)
         {
             _context = context;
         }
@@ -30,7 +26,7 @@ namespace PetShop_Atlantico.Pages.PetOwners
                 return NotFound();
             }
 
-            PetOwner = await _context.PetOwners.FirstOrDefaultAsync(m => m.Id == id);
+            PetOwner = await _context.PetOwner.FirstOrDefaultAsync(m => m.Id == id);
 
             if (PetOwner == null)
             {
@@ -38,9 +34,7 @@ namespace PetShop_Atlantico.Pages.PetOwners
             }
             return Page();
         }
-
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
+        
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -71,7 +65,7 @@ namespace PetShop_Atlantico.Pages.PetOwners
 
         private bool PetOwnerExists(int id)
         {
-            return _context.PetOwners.Any(e => e.Id == id);
+            return _context.PetOwner.Any(e => e.Id == id);
         }
     }
 }

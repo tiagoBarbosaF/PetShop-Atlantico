@@ -1,20 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using PetShopAtlantico.Data;
 using PetShopAtlantico.Models;
 
-namespace PetShop_Atlantico.Pages.Accommodations
+namespace PetShopAtlantico.Pages.Accommodations
 {
     public class DeleteModel : PageModel
     {
-        private readonly PetShopAtlantico.Data.DataContext _context;
+        private readonly DataContext _context;
 
-        public DeleteModel(PetShopAtlantico.Data.DataContext context)
+        public DeleteModel(DataContext context)
         {
             _context = context;
         }
@@ -29,7 +25,8 @@ namespace PetShop_Atlantico.Pages.Accommodations
                 return NotFound();
             }
 
-            Accommodation = await _context.Accommodations.FirstOrDefaultAsync(m => m.Id == id);
+            Accommodation = await _context.Accommodation
+                .Include(a => a.Pet).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Accommodation == null)
             {
@@ -45,11 +42,11 @@ namespace PetShop_Atlantico.Pages.Accommodations
                 return NotFound();
             }
 
-            Accommodation = await _context.Accommodations.FindAsync(id);
+            Accommodation = await _context.Accommodation.FindAsync(id);
 
             if (Accommodation != null)
             {
-                _context.Accommodations.Remove(Accommodation);
+                _context.Accommodation.Remove(Accommodation);
                 await _context.SaveChangesAsync();
             }
 

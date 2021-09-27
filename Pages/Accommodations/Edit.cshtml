@@ -1,34 +1,54 @@
 @page
-@model PetShop_Atlantico.Pages.Accommodations.EditModel
+@model PetShopAtlantico.Pages.Accommodations.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Accommodation - Edit";
 }
 
-<h1>Edit</h1>
+<section>
 
-<h4>Accommodation</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Accommodation.Id" />
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Accommodation.IsVacant" /> @Html.DisplayNameFor(model => model.Accommodation.IsVacant)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+
+    <h1 class="titlePage">Accommodation - Edit</h1>
+
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Accommodation.Id"/>
+                <div class="form-group">
+                    <label asp-for="Accommodation.HospitalizationMotive" class="control-label"></label>
+                    <input asp-for="Accommodation.HospitalizationMotive" class="form-control"/>
+                    <span asp-validation-for="Accommodation.HospitalizationMotive" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Accommodation.HealthState" class="control-label"></label>
+                    <input asp-for="Accommodation.HealthState" class="form-control"/>
+                    <span asp-validation-for="Accommodation.HealthState" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Accommodation.AccommodationDate" class="control-label"></label>
+                    <input asp-for="Accommodation.AccommodationDate" class="form-control"/>
+                    <span asp-validation-for="Accommodation.AccommodationDate" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Accommodation.IsNotVacant"/> @Html.DisplayNameFor(model => model.Accommodation.IsNotVacant)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Accommodation.PetId" class="control-label"></label>
+                    <select asp-for="Accommodation.PetId" class="form-control" asp-items="ViewBag.PetName"></select>
+                    <span asp-validation-for="Accommodation.PetId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success"/>
+                    <a asp-page="./Index" class="btn btn-warning">Back</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

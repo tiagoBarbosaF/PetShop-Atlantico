@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using PetShopAtlantico.Data;
 using PetShopAtlantico.Models;
 
-namespace PetShop_Atlantico.Pages
+namespace PetShopAtlantico.Pages
 {
     public class IndexModel : PageModel
     {
@@ -22,30 +19,23 @@ namespace PetShop_Atlantico.Pages
         }
 
         public IList<Pet> Pets { get; set; }
+        public IList<Accommodation> Accommodations { get; set; }
+        public IList<PetOwner> PetOwners { get; set; }
         
         [BindProperty]
         public Pet Pet { get; set; }
+        
+        [BindProperty]
+        public Accommodation Accommodation { get; set; }
         
         [BindProperty]
         public PetOwner PetOwner { get; set; }
 
         public async Task OnGetAsync()
         {
-            Pets = await _context.Pets.ToListAsync();
-        }
-        
-        // POST Pets
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Pets.Add(Pet);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            Pets = await _context.Pet.ToListAsync();
+            Accommodations = await _context.Accommodation.ToListAsync();
+            PetOwners = await _context.PetOwner.ToListAsync();
         }
     }
 }

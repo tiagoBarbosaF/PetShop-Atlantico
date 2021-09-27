@@ -1,28 +1,61 @@
 @page
-@model PetShop_Atlantico.Pages.Accommodations.DeleteModel
+@model PetShopAtlantico.Pages.Accommodations.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Accommodation - Delete";
 }
 
-<h1>Delete</h1>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Accommodation</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Accommodation.IsVacant)
+<div class="container">
+    <h1 class="titlePage">Accommodation - Delete</h1>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <hr/>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.HospitalizationMotive):
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Accommodation.IsVacant)
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.HospitalizationMotive)
         </dd>
-    </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="Accommodation.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
+    </div>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.HealthState):
+        </dt>
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.HealthState)
+        </dd>
+    </div>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.AccommodationDate):
+        </dt>
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.AccommodationDate)
+        </dd>
+    </div>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.IsNotVacant):
+        </dt>
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.IsNotVacant)
+        </dd>
+    </div>
+    <div class="row">
+        <dt class="col-sm-auto">
+            @Html.DisplayNameFor(model => model.Accommodation.Pet.PetName):
+        </dt>
+        <dd class="col-sm-auto">
+            @Html.DisplayFor(model => model.Accommodation.Pet.PetName)
+        </dd>
+    </div>
+    <div>
+        <form method="post">
+            <input type="hidden" asp-for="Accommodation.Id"/>
+            <input type="submit" value="Delete" class="btn btn-danger"/>
+            <a asp-page="./Index" class="btn btn-warning">Back</a>
+        </form>
+    </div>
 </div>

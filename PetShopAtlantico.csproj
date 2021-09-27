@@ -2,12 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>PetShop_Atlantico</RootNamespace>
+    <RootNamespace>PetShopAtlantico</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Services" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\img\pets01.jpg" />
@@ -27,6 +23,20 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Pets\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Pets\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Pets\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Pets\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Pets\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\PetOwners\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\PetOwners\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\PetOwners\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\PetOwners\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\PetOwners\Index.cshtml" />
   </ItemGroup>
 
 </Project>

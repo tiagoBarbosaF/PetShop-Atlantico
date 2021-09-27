@@ -7,11 +7,11 @@ for details on configuring this project to bundle and minify static web assets. 
 
   --title-color       : hsl(var(--hue) 41% 10%);
   --title-font-size   : 1.875rem;
-  --subtitle-font-size: 1rem;
+  --subtitle-font-size: 2rem;
   --title-font        : 'Poppins', sans-serif;
+  --row-font-size : 1em;
 
   --body-font : 'DM Sans', sans-serif;
-  --body-color: hsl(0 0% 98%);
 }
 
 a.navbar-brand {
@@ -87,7 +87,7 @@ body {
   background-color: white;
   white-space     : nowrap;
   line-height     : 60px;
-  font            : 700 var(--title-font-font);
+  font            : 700 var(--title-font);
   /* Vertically center the text there */
 }
 
@@ -111,7 +111,8 @@ body {
   height          : 3rem;
   display         : inline-flex;
   align-items     : center;
-  padding         : 0 0 0 3.5rem;
+  align-content: center;
+  padding         : 0 0 0 6.5rem;
   border-radius   : 0.25rem;
   font            : 500 1rem var(--body-font);
   transition      : background .3s;
@@ -120,6 +121,24 @@ body {
 #button:hover {
   background: mediumseagreen;
 }
+
+#buttonCreate {
+  background-color: var(--hue);
+  color           : white;
+  height          : 2rem;
+  display         : inline-flex;
+  align-items     : center;
+  padding         : 1.2rem;
+  border-radius   : 0.25rem;
+  font            : 500 1rem var(--body-font);
+  transition      : background .3s;
+  text-decoration: none;
+}
+
+#buttonCreate:hover {
+  background: mediumseagreen;
+}
+
 
 #saveButton {
   background-color: var(--hue);
@@ -167,5 +186,29 @@ body {
 }
 
 .form-row {
-  margin: 1em;
+  align-content: center;
+}
+
+.titlePage {
+  margin: 2em 0 2em 0;
+  font : 700 2rem var(--title-font);
+  text-align: center;
+}
+
+#headerPages {
+  margin: 1em 0 1em 0;
+}
+
+table {
+  text-align: center;
+}
+
+.container{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row{
+  margin-bottom: 1em;
+  font-size: var(--row-font-size);
 }

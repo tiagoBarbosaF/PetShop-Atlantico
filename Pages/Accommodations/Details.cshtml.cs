@@ -1,20 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using PetShopAtlantico.Data;
 using PetShopAtlantico.Models;
 
-namespace PetShop_Atlantico.Pages.Accommodations
+namespace PetShopAtlantico.Pages.Accommodations
 {
     public class DetailsModel : PageModel
     {
-        private readonly PetShopAtlantico.Data.DataContext _context;
+        private readonly DataContext _context;
 
-        public DetailsModel(PetShopAtlantico.Data.DataContext context)
+        public DetailsModel(DataContext context)
         {
             _context = context;
         }
@@ -28,7 +24,8 @@ namespace PetShop_Atlantico.Pages.Accommodations
                 return NotFound();
             }
 
-            Accommodation = await _context.Accommodations.FirstOrDefaultAsync(m => m.Id == id);
+            Accommodation = await _context.Accommodation
+                .Include(a => a.Pet).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Accommodation == null)
             {
