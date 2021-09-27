@@ -48,4 +48,4 @@ Este de longe é um projeto "complicado", porém, exigiu uma boa atenção em ce
 
 Foi um bom desafio, que me ajudou a revisar e reforçar alguns bons conhecimentos.
 
-Espero que gostem!! :vulkan_salute: :grin:
+Espero que gostem!! :vulcan_salute: :grin:
